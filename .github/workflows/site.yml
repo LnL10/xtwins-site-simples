@@ -3,7 +3,9 @@ name: Site
 on:
   push:
     branches: [main]
+    paths-ignore: ["generated-tests/**"]
   pull_request:
+    paths-ignore: ["generated-tests/**"]
   workflow_dispatch:
 
 permissions:

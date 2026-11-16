@@ -32,8 +32,16 @@ e o [PDF](requirements/requisitos-gestor-tarefas.pdf), com 16 regras (RF-01 a RF
 
 Sem `credential_ref`, o app-explorer e os testes gerados usam o site como visitante.
 
-Os pacotes de testes podem continuar a ser entregues no repositório da sandbox (`publish.repository` =
-`LnL10/xtwins-github-sandbox`); só muda o `app_url`.
+Os pacotes de testes do Gestor de Tarefas são entregues neste repositório, em [`generated-tests/`](generated-tests):
+
+```json
+{ "publish": { "repository": "LnL10/xtwins-site-simples", "base_branch": "main", "mode": "pull_request" },
+  "app_url": "https://lnl10.github.io/xtwins-site-simples/" }
+```
+
+O token do conector GitHub (`GITHUB_TOKEN`) tem de incluir este repositório (Contents e Pull requests em leitura e
+escrita). Cada PR que muda `generated-tests/` corre os pacotes alterados contra uma cópia local do site (workflow
+**Testes gerados**).
 
 ## Desenvolvimento
 
