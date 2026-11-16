@@ -126,17 +126,20 @@ function desenharTarefas() {
     linha.dataset.id = tarefa.id;
     if (tarefa.concluida) linha.className = "concluida";
 
-    const celConcluida = document.createElement("td");
+    // A caixa fica dentro da etiqueta com o título: o nome acessível da caixa é o título da tarefa, e nenhuma outra
+    // célula da linha repete o título (um localizador pelo título encontra uma só célula).
+    const celTitulo = document.createElement("td");
+    const etiqueta = document.createElement("label");
+    etiqueta.className = "tarefa";
     const caixa = document.createElement("input");
     caixa.type = "checkbox";
     caixa.checked = tarefa.concluida;
     caixa.id = `concluida-${tarefa.id}`;
-    caixa.setAttribute("aria-label", `Concluída: ${tarefa.titulo}`);
     caixa.addEventListener("change", () => alterarTarefa(tarefa.id, { concluida: caixa.checked }));
-    celConcluida.appendChild(caixa);
-
-    const celTitulo = document.createElement("td");
-    celTitulo.textContent = tarefa.titulo;
+    const titulo = document.createElement("span");
+    titulo.textContent = tarefa.titulo;
+    etiqueta.append(caixa, titulo);
+    celTitulo.appendChild(etiqueta);
     const celPrioridade = document.createElement("td");
     celPrioridade.textContent = tarefa.prioridade;
     const celData = document.createElement("td");
@@ -147,11 +150,10 @@ function desenharTarefas() {
     apagar.type = "button";
     apagar.className = "secundario";
     apagar.textContent = "Apagar";
-    apagar.setAttribute("aria-label", `Apagar ${tarefa.titulo}`);
     apagar.addEventListener("click", () => apagarTarefa(tarefa.id));
     celAcoes.appendChild(apagar);
 
-    linha.append(celConcluida, celTitulo, celPrioridade, celData, celAcoes);
+    linha.append(celTitulo, celPrioridade, celData, celAcoes);
     corpo.appendChild(linha);
   });
 

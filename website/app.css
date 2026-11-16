@@ -23,5 +23,6 @@ header button.secundario { padding: 6px 12px; font-size: 14px; }
 .aviso { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; border-radius: 6px; padding: 10px 12px; margin: 0 0 12px; }
 table { width: 100%; border-collapse: collapse; }
 th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #e5e7eb; }
-tr.concluida td:nth-child(2) { text-decoration: line-through; color: #6b7280; }
+label.tarefa { display: flex; align-items: center; gap: 8px; font-weight: normal; margin: 0; cursor: pointer; }
+tr.concluida label.tarefa span { text-decoration: line-through; color: #6b7280; }
 .dica { margin-top: 18px; font-size: 13px; color: #6b7280; }

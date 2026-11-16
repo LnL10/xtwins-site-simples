@@ -56,21 +56,21 @@ def test_terminar_sessao(site, page):
 
 def test_marcar_concluida_atualiza_contador(site, page):
     site.open("tarefas.html")
-    page.get_by_label("Concluída: Rever requisitos").check()
+    page.get_by_label("Rever requisitos").check()
     expect(page.get_by_text("1 tarefa por fazer")).to_be_visible()
     page.reload()
-    expect(page.get_by_label("Concluída: Rever requisitos")).to_be_checked()
-    page.get_by_label("Concluída: Rever requisitos").uncheck()
+    expect(page.get_by_label("Rever requisitos")).to_be_checked()
+    page.get_by_label("Rever requisitos").uncheck()
     expect(page.get_by_text("2 tarefas por fazer")).to_be_visible()
 
 
 def test_apagar_todas_mostra_sem_tarefas(site, page):
     site.open("tarefas.html")
-    page.get_by_role("button", name="Apagar Rever requisitos").click()
+    page.get_by_role("row", name="Rever requisitos").get_by_role("button", name="Apagar").click()
     expect(page.get_by_role("status")).to_have_text("Tarefa apagada.")
     expect(page.locator("#lista-tarefas tr")).to_have_count(2)
-    page.get_by_role("button", name="Apagar Preparar demonstração").click()
-    page.get_by_role("button", name="Apagar Enviar relatório semanal").click()
+    page.get_by_role("button", name="Apagar").first.click()
+    page.get_by_role("button", name="Apagar").first.click()
     expect(page.get_by_text("Não tem tarefas.")).to_be_visible()
     expect(page.get_by_text("0 tarefas por fazer")).to_be_visible()
 
@@ -115,3 +115,11 @@ def test_cancelar_nao_cria(site, page):
     page.get_by_role("link", name="Cancelar").click()
     expect(page).to_have_url(re.compile(r"tarefas\.html$"))
     expect(page.locator("#lista-tarefas tr")).to_have_count(3)
+
+
+def test_titulo_identifica_uma_so_celula(site, page):
+    """Um localizador pelo título (sem exact) encontra uma só célula e uma só caixa de verificação."""
+    site.open("tarefas.html")
+    expect(page.get_by_role("cell", name="Rever requisitos")).to_have_count(1)
+    expect(page.get_by_role("checkbox", name="Rever requisitos")).to_have_count(1)
+    expect(page.get_by_role("button", name="Apagar")).to_have_count(3)

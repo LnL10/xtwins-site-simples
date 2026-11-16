@@ -4,10 +4,11 @@ Aplicação web onde uma pessoa gere a sua lista de tarefas. Tem três páginas:
 Nova tarefa (`nova-tarefa.html`) e Iniciar sessão (`login.html`). O endereço da aplicação (`index.html`) abre a página
 As minhas tarefas.
 
-Não é preciso iniciar sessão: todas as páginas e funcionalidades estão disponíveis sem conta. Iniciar sessão é opcional
-e só faz aparecer o nome do utilizador no cabeçalho.
+Todas as páginas e funcionalidades estão disponíveis para qualquer visitante, sem conta. A secção 1 descreve uma
+funcionalidade opcional e independente das outras; as secções 2 e 3 descrevem o uso por um visitante.
 
-Os dados ficam no browser. Cada browser novo começa com as mesmas três tarefas.
+Os dados ficam no browser. Cada browser novo começa sempre com as mesmas três tarefas (RF-08): é esse o estado inicial
+de qualquer teste.
 
 ## Utilizadores
 
@@ -32,28 +33,29 @@ maiúsculas de minúsculas.
 
 **RF-04.** Com um email ou uma password errados, a aplicação mostra "Email ou password incorretos." e fica na página.
 
-**RF-05.** Com sessão iniciada, a página Iniciar sessão abre As minhas tarefas. As tarefas são as mesmas com e sem
-sessão.
+**RF-05.** Com sessão iniciada, a página Iniciar sessão abre As minhas tarefas.
 
 **RF-06.** O botão "Terminar sessão" termina a sessão, mostra "Sessão terminada." e o cabeçalho volta a mostrar a
 ligação "Iniciar sessão". A página continua a ser As minhas tarefas.
 
 ## 2. As minhas tarefas
 
-**RF-07.** A página mostra uma tabela com as colunas Concluída, Título, Prioridade, Data limite e Ações. Uma tarefa sem data limite mostra "—"; as datas aparecem como dd/mm/aaaa.
+**RF-07.** A página mostra uma tabela com as colunas Tarefa, Prioridade, Data limite e Ações. A coluna Tarefa tem uma
+caixa de verificação com o título da tarefa; a coluna Ações tem o botão "Apagar". Uma tarefa sem data limite mostra "—";
+as datas aparecem como dd/mm/aaaa.
 
 **RF-08.** As tarefas iniciais são:
 
-| Título | Prioridade | Concluída |
-|---|---|---|
-| Rever requisitos | Alta | Não |
-| Preparar demonstração | Média | Não |
-| Enviar relatório semanal | Baixa | Sim |
+| Título | Prioridade | Data limite | Concluída |
+|---|---|---|---|
+| Rever requisitos | Alta | — | Não |
+| Preparar demonstração | Média | — | Não |
+| Enviar relatório semanal | Baixa | — | Sim |
 
 **RF-09.** Por cima da tabela, um contador mostra quantas tarefas estão por fazer: "1 tarefa por fazer" ou
 "N tarefas por fazer". Com as tarefas iniciais mostra "2 tarefas por fazer".
 
-**RF-10.** Marcar a caixa "Concluída" de uma tarefa marca-a como concluída (o título aparece riscado) e atualiza o
+**RF-10.** Marcar a caixa de verificação de uma tarefa marca-a como concluída (o título aparece riscado) e atualiza o
 contador. Desmarcar volta a pô-la por fazer.
 
 **RF-11.** O botão "Apagar" de uma tarefa remove-a da tabela, sem pedir confirmação, e mostra "Tarefa apagada.". Sem
