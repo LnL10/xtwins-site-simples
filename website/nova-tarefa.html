@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Nova tarefa · Gestor de Tarefas</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-pagina="nova-tarefa">
+  <header><span class="marca">Gestor de Tarefas</span></header>
+  <main>
+    <div class="cartao estreito">
+      <h1>Nova tarefa</h1>
+      <ul id="erros" class="erros" role="alert" hidden></ul>
+      <form id="form-tarefa" novalidate>
+        <label for="titulo">Título</label>
+        <input id="titulo" name="titulo" type="text">
+        <div class="ajuda">Obrigatório, entre 3 e 60 caracteres.</div>
+        <label for="prioridade">Prioridade</label>
+        <select id="prioridade" name="prioridade">
+          <option>Baixa</option>
+          <option selected>Média</option>
+          <option>Alta</option>
+        </select>
+        <label for="data-limite">Data limite</label>
+        <input id="data-limite" name="data-limite" type="date">
+        <div class="ajuda">Opcional. Não pode ser no passado.</div>
+        <div class="acoes">
+          <button type="submit">Guardar</button>
+          <a class="botao secundario" href="tarefas.html">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

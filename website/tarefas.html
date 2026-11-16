@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Tarefas · Gestor de Tarefas</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-pagina="tarefas">
+  <header>
+    <span class="marca">Gestor de Tarefas</span>
+    <span class="utilizador"><span id="utilizador"></span><button id="terminar-sessao" type="button" class="secundario">Terminar sessão</button></span>
+  </header>
+  <main>
+    <div class="cartao">
+      <div class="barra">
+        <h1>As minhas tarefas</h1>
+        <a class="botao" href="nova-tarefa.html">Nova tarefa</a>
+      </div>
+      <p id="aviso" class="aviso" role="status" hidden></p>
+      <p id="contador"></p>
+      <table id="tabela-tarefas">
+        <thead><tr><th>Concluída</th><th>Título</th><th>Prioridade</th><th>Data limite</th><th>Ações</th></tr></thead>
+        <tbody id="lista-tarefas"></tbody>
+      </table>
+      <p id="sem-tarefas" hidden>Não tem tarefas.</p>
+    </div>
+  </main>
+</body>
+</html>
