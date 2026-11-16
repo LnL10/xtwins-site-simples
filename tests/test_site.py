@@ -16,6 +16,13 @@ def test_raiz_abre_tarefas_sem_sessao(site, page):
     expect(page.locator("#lista-tarefas tr")).to_have_count(3)
 
 
+def test_tarefas_iniciais_com_e_sem_data_limite(site, page):
+    page.goto(site.base)
+    linhas = page.locator("#lista-tarefas tr")
+    expect(linhas.filter(has_text="Preparar demonstração").get_by_role("cell").nth(2)).to_have_text("31/12/2027")
+    expect(linhas.filter(has_text="Rever requisitos").get_by_role("cell").nth(2)).to_have_text("—")
+
+
 def test_login_com_sucesso_mostra_nome(site, page):
     site.open("tarefas.html")
     page.get_by_role("link", name="Iniciar sessão").click()

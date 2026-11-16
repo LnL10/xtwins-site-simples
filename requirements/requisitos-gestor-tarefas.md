@@ -49,7 +49,7 @@ as datas aparecem como dd/mm/aaaa.
 | Título | Prioridade | Data limite | Concluída |
 |---|---|---|---|
 | Rever requisitos | Alta | — | Não |
-| Preparar demonstração | Média | — | Não |
+| Preparar demonstração | Média | 31/12/2027 | Não |
 | Enviar relatório semanal | Baixa | — | Sim |
 
 **RF-09.** Por cima da tabela, um contador mostra quantas tarefas estão por fazer: "1 tarefa por fazer" ou

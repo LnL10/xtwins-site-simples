@@ -9,7 +9,7 @@ const K_AVISO = "simples:aviso";
 
 const TAREFAS_INICIAIS = [
   { id: 1, titulo: "Rever requisitos", prioridade: "Alta", dataLimite: "", concluida: false },
-  { id: 2, titulo: "Preparar demonstração", prioridade: "Média", dataLimite: "", concluida: false },
+  { id: 2, titulo: "Preparar demonstração", prioridade: "Média", dataLimite: "2027-12-31", concluida: false },
   { id: 3, titulo: "Enviar relatório semanal", prioridade: "Baixa", dataLimite: "", concluida: true },
 ];
 
