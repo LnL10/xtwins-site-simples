@@ -10,13 +10,15 @@ Nada aqui é produção: a conta e as tarefas são fictícias e ficam no browser
 
 ## Páginas
 
-| Página | Ficheiro | Sessão |
-|---|---|---|
-| Iniciar sessão | `login.html` (a raiz abre esta) | não |
-| As minhas tarefas | `tarefas.html` | sim |
-| Nova tarefa | `nova-tarefa.html` | sim |
+| Página | Ficheiro |
+|---|---|
+| As minhas tarefas | `tarefas.html` (a raiz abre esta) |
+| Nova tarefa | `nova-tarefa.html` |
+| Iniciar sessão | `login.html` (opcional) |
 
-Conta: `ana.silva@example.com` / `Cliente#2026` (a mesma credencial da Loja Aurora).
+**Não é preciso credenciais:** todas as páginas funcionam sem sessão. Iniciar sessão é opcional e só mostra o nome no
+cabeçalho; serve para testar o fluxo de login do xTwins quando se quiser. Conta: `ana.silva@example.com` /
+`Cliente#2026` (a mesma credencial da Loja Aurora).
 Cada browser novo começa com 3 tarefas: Rever requisitos, Preparar demonstração e Enviar relatório semanal (concluída).
 
 Requisitos (input do story-writer): [`requirements/requisitos-gestor-tarefas.md`](requirements/requisitos-gestor-tarefas.md)
@@ -27,6 +29,8 @@ e o [PDF](requirements/requisitos-gestor-tarefas.pdf), com 16 regras (RF-01 a RF
 ```json
 { "app_url": "https://lnl10.github.io/xtwins-site-simples/" }
 ```
+
+Sem `credential_ref`, o app-explorer e os testes gerados usam o site como visitante.
 
 Os pacotes de testes podem continuar a ser entregues no repositório da sandbox (`publish.repository` =
 `LnL10/xtwins-github-sandbox`); só muda o `app_url`.

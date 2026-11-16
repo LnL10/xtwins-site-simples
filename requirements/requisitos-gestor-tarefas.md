@@ -1,12 +1,17 @@
 # Gestor de Tarefas: requisitos
 
-Aplicação web onde uma pessoa inicia sessão e gere a sua lista de tarefas. Tem três páginas: Iniciar sessão
-(`login.html`), As minhas tarefas (`tarefas.html`) e Nova tarefa (`nova-tarefa.html`). O endereço da aplicação
-(`index.html`) abre a página Iniciar sessão.
+Aplicação web onde uma pessoa gere a sua lista de tarefas. Tem três páginas: As minhas tarefas (`tarefas.html`),
+Nova tarefa (`nova-tarefa.html`) e Iniciar sessão (`login.html`). O endereço da aplicação (`index.html`) abre a página
+As minhas tarefas.
+
+Não é preciso iniciar sessão: todas as páginas e funcionalidades estão disponíveis sem conta. Iniciar sessão é opcional
+e só faz aparecer o nome do utilizador no cabeçalho.
 
 Os dados ficam no browser. Cada browser novo começa com as mesmas três tarefas.
 
 ## Utilizadores
+
+Visitante: qualquer pessoa, sem sessão. Pode usar toda a aplicação.
 
 | Perfil | Email | Nome |
 |---|---|---|
@@ -14,27 +19,28 @@ Os dados ficam no browser. Cada browser novo começa com as mesmas três tarefas
 
 A password é entregue em separado (no xTwins, como credencial do projeto).
 
-## 1. Iniciar sessão
+## 1. Iniciar sessão (opcional)
 
-**RF-01.** A página Iniciar sessão tem os campos "Email" e "Password" e o botão "Entrar".
+**RF-01.** A página Iniciar sessão abre-se pela ligação "Iniciar sessão" do cabeçalho da página As minhas tarefas. Tem
+os campos "Email" e "Password", o botão "Entrar" e a ligação "Continuar sem sessão", que abre As minhas tarefas.
 
-**RF-02.** Com o email e a password corretos, a aplicação abre a página As minhas tarefas. O email não distingue
+**RF-02.** Com o email e a password corretos, a aplicação abre a página As minhas tarefas, com o nome do utilizador
+("Ana Silva") e o botão "Terminar sessão" no cabeçalho, em vez da ligação "Iniciar sessão". O email não distingue
 maiúsculas de minúsculas.
 
 **RF-03.** Com algum dos campos vazio, a aplicação mostra "Preencha o email e a password." e fica na página.
 
 **RF-04.** Com um email ou uma password errados, a aplicação mostra "Email ou password incorretos." e fica na página.
 
-**RF-05.** As páginas As minhas tarefas e Nova tarefa exigem sessão: sem sessão, a aplicação abre a página Iniciar
-sessão. Com sessão, a página Iniciar sessão abre As minhas tarefas.
+**RF-05.** Com sessão iniciada, a página Iniciar sessão abre As minhas tarefas. As tarefas são as mesmas com e sem
+sessão.
 
-**RF-06.** Na página As minhas tarefas, o botão "Terminar sessão" termina a sessão, abre a página Iniciar sessão e
-mostra "Sessão terminada.".
+**RF-06.** O botão "Terminar sessão" termina a sessão, mostra "Sessão terminada." e o cabeçalho volta a mostrar a
+ligação "Iniciar sessão". A página continua a ser As minhas tarefas.
 
 ## 2. As minhas tarefas
 
-**RF-07.** A página mostra o nome do utilizador ("Ana Silva") e uma tabela com as colunas Concluída, Título,
-Prioridade, Data limite e Ações. Uma tarefa sem data limite mostra "—"; as datas aparecem como dd/mm/aaaa.
+**RF-07.** A página mostra uma tabela com as colunas Concluída, Título, Prioridade, Data limite e Ações. Uma tarefa sem data limite mostra "—"; as datas aparecem como dd/mm/aaaa.
 
 **RF-08.** As tarefas iniciais são:
 

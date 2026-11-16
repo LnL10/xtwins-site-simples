@@ -1,5 +1,6 @@
 // Gestor de Tarefas: sem servidor. A sessão e as tarefas ficam no localStorage do browser.
 // Um browser novo (ou um contexto novo do Playwright) começa sempre com os mesmos dados.
+// A sessão é opcional: todas as páginas funcionam sem ela; com sessão, o cabeçalho mostra o nome.
 
 const CONTA = { email: "ana.silva@example.com", password: "Cliente#2026", nome: "Ana Silva" };
 const K_SESSAO = "simples:sessao";
@@ -29,12 +30,18 @@ function sessao() {
   return ler(K_SESSAO, null);
 }
 
-function exigirSessao() {
-  if (!sessao()) {
-    location.replace("login.html");
-    return false;
-  }
-  return true;
+function desenharCabecalho() {
+  const atual = sessao();
+  document.getElementById("com-sessao").hidden = !atual;
+  document.getElementById("sem-sessao").hidden = !!atual;
+  if (atual) document.getElementById("utilizador").textContent = atual.nome;
+  document.getElementById("terminar-sessao").onclick = () => {
+    localStorage.removeItem(K_SESSAO);
+    desenharCabecalho();
+    const caixa = document.getElementById("aviso");
+    caixa.textContent = "Sessão terminada.";
+    caixa.hidden = false;
+  };
 }
 
 function tarefas() {
@@ -105,13 +112,7 @@ function paginaLogin() {
 // ---- tarefas.html ----
 
 function paginaTarefas() {
-  if (!exigirSessao()) return;
-  document.getElementById("utilizador").textContent = sessao().nome;
-  document.getElementById("terminar-sessao").addEventListener("click", () => {
-    localStorage.removeItem(K_SESSAO);
-    avisar("Sessão terminada.");
-    location.href = "login.html";
-  });
+  desenharCabecalho();
   mostrarAviso();
   desenharTarefas();
 }
@@ -177,7 +178,6 @@ function apagarTarefa(id) {
 // ---- nova-tarefa.html ----
 
 function paginaNovaTarefa() {
-  if (!exigirSessao()) return;
   const dataLimite = document.getElementById("data-limite");
   dataLimite.min = hoje();
   document.getElementById("form-tarefa").addEventListener("submit", (evento) => {
